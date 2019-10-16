@@ -29,7 +29,7 @@ int main(void)
 
     do{
         num=min+rand() %max;
-        printf("il numero scelto è %d?(y/n)(min=%d,max=%d)\n",num,min,max);
+        printf("il numero scelto è %d?(y/n)\n",num);
         scanf("%c",&risposta);
         fflush(stdin);
         if(toupper(risposta)=='N')
@@ -37,8 +37,15 @@ int main(void)
             printf("il numero pensato viene prima(<) o dopo(>) %d?\n",num);
             scanf("%c",&segno);
             fflush(stdin);
-            if(segno=='<')max=(num-1)-min;
-            else if(segno=='>')min=num+1;
+            if(segno=='<')
+            {
+                max=(num-1)-min;
+            }
+            else if(segno=='>')
+                {
+                    min=num+1;
+                    max=abs(max-min);
+                }
         }
 
     }while(toupper(risposta)!= 'Y');
