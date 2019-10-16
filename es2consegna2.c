@@ -29,7 +29,7 @@ int main(void)
 
     do{
         num=min+rand() %max;
-        printf("il numero scelto è %d?(y/n)(%d %d)\n",num,min,max+min);
+        printf("il numero scelto è %d?(y/n)\n",num);
         scanf("%c",&risposta);
         fflush(stdin);
         if(toupper(risposta)=='N')
@@ -39,13 +39,13 @@ int main(void)
             fflush(stdin);
             if(segno=='<')
             {
-                max=(num-1)-min;
+                max=(num)-min;//max=(num-1)-min;
                 Valmax=max+min;
             }
             else if(segno=='>')
                 {
                     min=num+1;
-                    max=Valmax-min;
+                    max=Valmax-min+1;
                 }
         }
 
