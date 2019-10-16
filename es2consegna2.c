@@ -5,31 +5,31 @@
 
 int main(void)
 {
-    int min,max;
+    int min,max,Valmax;
     int num;
     char risposta='N';
     char segno;
 
     printf("inserisci min e max:\n");
-    scanf("%d %d",&min,&max);
+    scanf("%d %d",&min,&Valmax);
     fflush(stdin);
 
     if(min<0)min=0;
-    if(min>max)
+    if(min>Valmax)
     {
         int mem=min;
-        min=max;
-        max=mem;
+        min=Valmax;
+        Valmax=mem;
 
     }
 
 
     srand(time(NULL));
-    max=max-min;  //parte
+    max=Valmax-min;  //parte
 
     do{
         num=min+rand() %max;
-        printf("il numero scelto è %d?(y/n)\n",num);
+        printf("il numero scelto è %d?(y/n)(%d %d)\n",num,min,max+min);
         scanf("%c",&risposta);
         fflush(stdin);
         if(toupper(risposta)=='N')
@@ -40,11 +40,12 @@ int main(void)
             if(segno=='<')
             {
                 max=(num-1)-min;
+                Valmax=max+min;
             }
             else if(segno=='>')
                 {
                     min=num+1;
-                    max=abs(max-min);
+                    max=Valmax-min;
                 }
         }
 
